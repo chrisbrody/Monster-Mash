@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	var int1, int2, int3;
 	var clix = [0,0,0,0];
+	var w = 367;
+	var m = 10;
 	
 	window.blur = stopLightning;
 	window.focus = goLightning;
@@ -40,22 +42,50 @@ $(document).ready(function() {
 		else { $(obj).animate({ left: "0"}, 500); clix[0] = 0; }
 	}
 
-	$('#head').click(function() {
-		moveMe(0, this);
-	});
+	function getRandom(num) {
+		var my_random_num = Math.floor(Math.random()*num);
+		return my_random_num;
+	}
 
-	$('#eyes').click(function() {
-		moveMe(1, this);
-	});
+	function randomize() {
+		$(".face").each(function (index) {
+			var target_position = getRandom(m);
+			var current_position = clix[index];
+			clix[index] = target_position;
+			if ( target_position > current_position ) {
+				var move_to = ( target_position - current_position ) * w;
+				$(this).animate({ left: "-="+move_to+"px" }, 500);
+			} else if ( target_position < current_position ) {
+				var move_to = ( current_position - target_position ) * w;
+				$(this).animate({ left: "+="+move_to+"px" }, 500);
+			}
+			
+		});
+	}
 
-	$('#nose').click(function() {
-		moveMe(2, this);
-	});
+	function reset() {
+		$(".face").each(function (index) {
+			clix[index] = 0;
+			$(this).animate({ left: "0"}, 500);
+		});
+	}
 
-	$('#mouth').click(function() {
-		moveMe(3, this);
-	});
+	$('#head').click(function() { moveMe(0, this); });
+
+	$('#eyes').click(function() { moveMe(1, this); });
+
+	$('#nose').click(function() { moveMe(2, this); });
+
+	$('#mouth').click(function() { moveMe(3, this); });
+
+	$("#btnRandom").click( randomize );
+	$("#btnReset").click( reset );
 
 	goLightning();
+
+	
+
+	
+
 });
 

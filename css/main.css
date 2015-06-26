@@ -9,29 +9,31 @@ p {
 #top {
 	position: relative;
 	z-index: 4;
+	text-align: center;
 }
 #container {
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 0;
+	width: 100%;
+	overflow-x: hidden;
 }
 .lightning {
 	display: none;
 	position: absolute;
 	left: 0;
 	top: 0;
-	z-index: 0;
+	z-index: -5;
 }
 #frame {
-	position: absolute;
-	left: 100px;
-	top: 100px;
 	width: 545px;
 	height: 629px;
 	background-image: url(../img/frame.png);
-	z-index: 2;
+	z-index: 3;
 	overflow: hidden;
+	margin: 100px auto 0;
+
 }
 #pic_box {
 	position: relative;
