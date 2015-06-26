@@ -6,6 +6,16 @@ p {
 	font-size: 12px;
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
+button {
+	background-color: #21A342;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	transition: all 0.3s ease-in-out;
+}
+button:hover {
+	background-color: #29CC52;
+}
 #top {
 	position: relative;
 	z-index: 4;
